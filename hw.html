@@ -1,0 +1,79 @@
+<html> 
+<head>
+	<script>
+		var load = function(){
+			alert('welcome to the JavaScript calculator');
+		}
+		window.onload = load;
+	</script>
+	<body>
+	<h3>Simple Calculator</h3>
+First Value:<input type ="text" id="firstValue"/>
+	<form id="calc" >
+	  <table border=2>
+		<tr>
+		</tr>
+		<tr>
+			<td>
+				<label><input type=radio value="+" name="operator" onclick="operatorSelect()"/>+</label>
+			</td>
+		</tr>
+		<tr>
+
+		<td>
+			<label><input type=radio value="-" name="operator" onclick="operatorSelect()"/>-</label></td>
+		</tr>
+		<tr>
+
+		<td>
+			<label><input type=radio value="*" name="operator" onclick="operatorSelect()"/>*</label></td>
+		</tr>
+		<tr>
+
+		<td>
+			<label><input type=radio value="/" name="operator" onclick="operatorSelect()"/>/</label></td>
+		</tr>
+	  </table>
+		</form>
+		Second Value:<input type ="text" id="SecondValue"/>
+	<button id="SecondValue" onclick = "compute()">Compute</button> <p>Result: </p><p id="result"></p>
+
+</body>
+<script>
+	var operatorChosen; 
+	var form = document.getElementById('calc')
+	var name = 'operator'
+	var operators = form.elements[name]
+	//getting the checked operators
+	function operatorSelect () {
+		
+		for(var i = 0; i < operators.length; i++){
+			if(operators[i].checked){
+				operatorChosen=operators[i].value;
+			}
+		}
+	}
+	//computing the value;
+	function compute() {
+
+		var firstVal = document.getElementById('firstValue').value;
+		var secondVal = document.getElementById('SecondValue').value;
+		var first = Number(firstVal);
+		var second = Number(secondVal);
+		if(operatorChosen === "+") {
+			document.getElementById('result').innerHTML = first+second; 
+		}
+		if(operatorChosen === "-") {
+			document.getElementById('result').innerHTML= first - second;
+		}
+		if(operatorChosen === "*") {
+			document.getElementById('result').innerHTML= first*second;
+		}
+		if(operatorChosen === "/") {
+			document.getElementById('result').innerHTML= first/second;
+		}
+
+	} 
+</script>
+</head>
+</html>
